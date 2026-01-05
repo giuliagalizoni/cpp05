@@ -1,0 +1,7 @@
+#executables
+bureaucrat
+
+#other
+.DS_Store
+.vscode
+generate_class.sh
