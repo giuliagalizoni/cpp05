@@ -5,3 +5,6 @@ bureaucrat
 .DS_Store
 .vscode
 generate_class.sh
+
+
+obj/
