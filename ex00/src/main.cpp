@@ -55,32 +55,5 @@ int	main()
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n=== Test 6: Copy constructor ===" << std::endl;
-	try {
-		Bureaucrat original("Original", 50);
-		Bureaucrat copy(original);
-		std::cout << "Original: " << original;
-		std::cout << "Copy: " << copy;
-	}
-	catch (const std::exception& e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
-	std::cout << "\n=== Test 7: Assignment operator ===" << std::endl;
-	try {
-		Bureaucrat first("First", 100);
-		Bureaucrat second("Second", 50);
-		std::cout << "Before assignment:" << std::endl;
-		std::cout << "First: " << first;
-		std::cout << "Second: " << second;
-		first = second;
-		std::cout << "After assignment (first = second):" << std::endl;
-		std::cout << "First: " << first;
-		std::cout << "Second: " << second;
-	}
-	catch (const std::exception& e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
 	return 0;
 }
