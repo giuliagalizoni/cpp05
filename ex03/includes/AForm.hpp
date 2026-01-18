@@ -20,12 +20,10 @@ class AForm
 		AForm(std::string name, int grade_to_sign, int grade_to_execute);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
-		virtual ~AForm();
-
-		// Public methods
-		void beSigned(const Bureaucrat& bureaucrat);
-		void execute (Bureaucrat const & executor) const;
-
+	virtual ~AForm();
+	// Public methods
+	void beSigned(const Bureaucrat& bureaucrat);
+	void execute (Bureaucrat const & executor) const;
 		// Getters and setters
 		std::string getName() const;
 		bool getSigned() const;

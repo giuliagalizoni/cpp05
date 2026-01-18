@@ -11,3 +11,4 @@ generate_class.sh
 
 
 obj/
+*_shrubbery
