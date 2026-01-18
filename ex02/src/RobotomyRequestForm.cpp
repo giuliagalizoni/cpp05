@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 #include <cstdlib>
 
 // Default constructor
@@ -39,10 +40,10 @@ RobotomyRequestForm::~RobotomyRequestForm()
 // Public methods implementation
 void RobotomyRequestForm::execute (Bureaucrat const & executor)
 {
-		std::cout << "Buzzzssfihfifdofiigoitttrrrrrrr" << std::endl;
-		if (rand() % 2)
-			std::cout << _target << " has been succssfully robotomized." << std::endl;
-		else
-			std::cout << "Robotomy failed." << std::endl;
-
+	std::cout << executor.getName() << " tries to execute form" << this->getName() << std::endl;
+	std::cout << "Buzzzssfihfifdofiigoitttrrrrrrr" << std::endl;
+	if (rand() % 2)
+		std::cout << _target << " has been succssfully robotomized." << std::endl;
+	else
+		std::cout << "Robotomy failed." << std::endl;
 }

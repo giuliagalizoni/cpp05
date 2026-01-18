@@ -56,6 +56,8 @@ void Bureaucrat::decrementGrade()
 	else
 		_grade++;
 }
+
+// should I put the try-catch here?
 void Bureaucrat::signForm(AForm& form)
 {
 	form.beSigned(*this);
