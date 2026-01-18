@@ -10,35 +10,26 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 		throw GradeTooHighException();
 	else if (_grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Bureaucrat constructor called for " << _name << " with grade " << _grade << std::endl;
 }
 // Default constructor
-Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
-{
-	std::cout << "Bureaucrat default constructor called" << std::endl;
-}
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {}
 
 // Copy constructor
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
 {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
 	*this = other;
 }
 
 // Copy assignment operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
-	std::cout << "Bureaucrat copy assignment operator called" << std::endl;
 	if (this != &other)
 		_grade = other._grade;
 	return *this;
 }
 
 // Destructor
-Bureaucrat::~Bureaucrat()
-{
-	std::cout << "Bureaucrat destructor called" << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 // Public methods implementation
 

@@ -3,26 +3,18 @@
 #include <cstdlib>
 
 // Default constructor
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
-{
-	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45) {}
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
-{
-	std::cout << "RobotomyRequestForm constructor called" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
 // Copy constructor
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other)
 {
 	_target = other._target;
-	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-	std::cout << "RobotomyRequestForm copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		AForm::operator=(other);
@@ -32,13 +24,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 }
 
 // Destructor
-RobotomyRequestForm::~RobotomyRequestForm()
-{
-	std::cout << "RobotomyRequestForm destructor called" << std::endl;
-}
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
-// Public methods implementation
-void RobotomyRequestForm::execute (Bureaucrat const & executor)
+// Private methods implementation
+void RobotomyRequestForm::performAction(Bureaucrat const & executor) const
 {
 	std::cout << executor.getName() << " tries to execute form" << this->getName() << std::endl;
 	std::cout << "Buzzzssfihfifdofiigoitttrrrrrrr" << std::endl;

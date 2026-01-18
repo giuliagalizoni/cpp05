@@ -10,6 +10,7 @@ class ShrubberyCreationForm : public AForm
 {
 	private:
 	std::string _target;
+	void performAction(Bureaucrat const & executor) const;
 
 	public:
 		ShrubberyCreationForm();
@@ -18,10 +19,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm();
 
-		// Public methods
-		void execute (Bureaucrat const & executor);
-
-		// Exceptions
+	// Exceptions
 		class OpenFileException : public std::exception
 		{
 			public:

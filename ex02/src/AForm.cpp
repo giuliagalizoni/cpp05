@@ -5,10 +5,7 @@
 AForm::AForm() : _name("default"),
 	_signed(false),
 	_grade_to_sign(150),
-	_grade_to_execute(150)
-{
-	std::cout << "AForm default constructor called" << std::endl;
-}
+	_grade_to_execute(150) {}
 
 AForm::AForm(std::string name, int grade_to_sign, int grade_to_execute)
 	: _name(name),
@@ -20,7 +17,6 @@ AForm::AForm(std::string name, int grade_to_sign, int grade_to_execute)
 		throw GradeTooHighException();
 	else if (_grade_to_sign > 150 || _grade_to_execute > 150)
 		throw GradeTooLowException();
-	std::cout << "AForm constructor called" << std::endl;
 }
 
 // Copy constructor
@@ -28,24 +24,27 @@ AForm::AForm(const AForm& other)
 	: _name(other._name),
 	_signed(other._signed),
 	_grade_to_sign(other._grade_to_sign),
-	_grade_to_execute(other._grade_to_execute)
-{
-	std::cout << "AForm copy constructor called" << std::endl;
-}
+	_grade_to_execute(other._grade_to_execute) {}
 
 // Copy assignment operator
 AForm& AForm::operator=(const AForm& other)
 {
-	std::cout << "AForm copy assignment operator called" << std::endl;
 	if (this != &other)
 		_signed = other._signed;
 	return *this;
 }
 
 // Destructor
-AForm::~AForm()
+AForm::~AForm() {}
+
+void AForm::execute (Bureaucrat const & executor) const
 {
-	std::cout << "AForm destructor called" << std::endl;
+	if (!_signed)
+		throw FormNotSignedException();
+	if (executor.getGrade() > _grade_to_execute)
+		throw GradeTooLowException();
+
+	performAction(executor);
 }
 
 // Public methods implementation
@@ -87,6 +86,10 @@ const char *AForm::GradeTooHighException::what() const throw() {
 
 const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade is too low!";
+}
+
+const char *AForm::FormNotSignedException::what() const throw() {
+	return "Form is not signed!";
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &form)

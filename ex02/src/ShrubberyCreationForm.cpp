@@ -3,29 +3,19 @@
 #include <fstream>
 
 // Default constructor
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137 )
-{
-	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137 ), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137 ), _target(target)
-{
-	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
-
-}
-
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137 ), _target(target) {}
 
 // Copy constructor
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)
 {
 	_target = other._target;
-	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-	std::cout << "ShrubberyCreationForm copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		AForm::operator=(other);
@@ -35,19 +25,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 // Destructor
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-// Public methods implementation
-void ShrubberyCreationForm::execute (Bureaucrat const & executor)
+// Private methods implementation
+void ShrubberyCreationForm::performAction(Bureaucrat const & executor) const
 {
-    if (executor.getGrade() > getGradeToExecute())
-        throw GradeTooLowException();
-
-    std::ofstream outfile;
-	outfile.open((_target.append("_shrubbery").c_str()));
+	std::ofstream outfile;
+	std::string filename = _target + "_shrubbery";
+	outfile.open(filename.c_str());
 	if (!outfile.is_open()) {
 		throw OpenFileException();
 	}
