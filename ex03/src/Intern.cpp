@@ -24,37 +24,41 @@ Intern& Intern::operator=(const Intern& other)
 // Destructor
 Intern::~Intern() {}
 
+// Private methods
+AForm *Intern::makeShrubbery(std::string target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm *Intern::makeRobotomy(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}
+AForm *Intern::makePresidential(std::string target)
+{
+	return new PresidentialPardonForm(target);
+}
+
 // Public methods implementation
 AForm *Intern::makeForm(std::string form_name, std::string target)
 {
 	std::string form_types[3] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
-	AForm *form = NULL;
-	int index = -1;
+
+	AForm* (Intern::*creators[3])(std::string) = {
+		&Intern::makeShrubbery,
+		&Intern::makeRobotomy,
+		&Intern::makePresidential
+	};
 
 	for (int i = 0; i < 3; i++)
 	{
 		if (form_name == form_types[i])
 		{
-			index = i;
-			break;
+			std::cout << "Intern creates " << form_name << std::endl;
+			return  (this->*creators[i])(target);
 		}
 	}
 
-	switch (index)
-	{
-		case 0:
-			form = new ShrubberyCreationForm(target);
-			break;
-		case 1:
-			form = new RobotomyRequestForm(target);
-			break;
-		case 2:
-			form = new PresidentialPardonForm(target);
-			break;
-		default:
-			std::cout << "Intern cannot create form: " << form_name << std::endl;
-			return NULL;
-	}
-	std::cout << "Intern creates " << form_name << std::endl;
-	return form;
+	std::cout << "Intern cannot create form: " << form_name << std::endl;
+	return NULL;
 }

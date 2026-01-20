@@ -7,6 +7,9 @@
 class Intern
 {
 	private:
+	AForm *makeShrubbery(std::string target);
+	AForm *makeRobotomy(std::string target);
+	AForm *makePresidential(std::string target);
 
 	protected:
 
